@@ -38,6 +38,12 @@
 .help-suggestions{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
 .help-suggestions button{padding:8px 12px;border:1px solid var(--brown);border-radius:999px;font-size:.78rem}
 .help-suggestions button:hover{background:var(--beige)}
+/* option buttons in the chat (cancel reasons, refund methods, confirm) — stacked, full width */
+.help-options{display:flex;flex-direction:column;gap:8px;align-self:stretch;margin-top:2px}
+.help-options button{padding:12px 14px;border:1px solid var(--brown);border-radius:10px;text-align:left;font-size:.88rem;background:var(--cream-2);transition:background .2s}
+.help-options button:hover{background:var(--beige)}
+.help-options button.primary{background:var(--brown);color:var(--cream);text-align:center}
+.help-options button.primary:hover{background:var(--brown-2)}
 .help-input{display:flex;gap:8px;padding:12px;border-top:1px solid var(--line)}
 .help-input input{flex:1;padding:12px 14px;border:1px solid var(--line);background:var(--cream-2);font-size:.9rem;color:var(--brown);outline:none}
 .help-input input:focus{border-color:var(--brown)}

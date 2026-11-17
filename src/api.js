@@ -21,5 +21,8 @@ export const placeOrder = (body) => postJson('/api/orders', body)
 
 export const getOrder = (id) => request('/api/orders/' + encodeURIComponent(id))
 
-// messages: [{ role: 'user' | 'assistant', text }] → { reply }
+// body: { reason, refund: { method: 'original' | 'upi' | 'phone', upiId?, phone? } } → the cancelled order
+export const cancelOrder = (id, body) => postJson(`/api/orders/${encodeURIComponent(id)}/cancel`, body)
+
+// messages: [{ role: 'user' | 'assistant', text }] → { reply, action? }
 export const askHelpline = (messages) => postJson('/api/support/chat', { messages })

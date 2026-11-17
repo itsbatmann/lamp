@@ -2,7 +2,7 @@
 
 An online store for handcrafted lamps. Customers can view each lamp in 3D, change its fabric, finish and light, and buy it as a guest. Payment is online only (a demo for now).
 
-**Stack:** React + Vite, Three.js (React Three Fiber), GSAP, Framer Motion · Node + Express · Claude API for the AI helpline.
+**Stack:** React + Vite, Three.js (React Three Fiber), GSAP, Framer Motion · Node + Express · MongoDB (Mongoose) · Claude API for the AI helpline.
 
 ## Features
 
@@ -15,7 +15,9 @@ An online store for handcrafted lamps. Customers can view each lamp in 3D, chang
 
 ## Run it locally
 
-Two terminals:
+First, set up the API's settings: copy `server/.env.example` to `server/.env` and set `MONGODB_URI`. Use a local MongoDB or a free MongoDB Atlas cluster. The API won't start without it.
+
+Then open two terminals:
 
 ```bash
 # 1. API (port 4000)
@@ -32,7 +34,7 @@ Open http://localhost:5173. Add `?intro` to the URL to replay the intro.
 
 ### AI helpline
 
-Copy `server/.env.example` to `server/.env` and set `ANTHROPIC_API_KEY`. Without a key, the helpline uses simple built-in replies.
+Set `ANTHROPIC_API_KEY` in `server/.env`. Without a key, the helpline uses simple built-in replies.
 
 ### Demo payment test values
 
@@ -50,7 +52,8 @@ No money is charged. To go live, replace `takePayment()` in `server/payment.js` 
 |---|---|
 | `server/index.js` | API routes |
 | `server/catalog.js` | Lamps, options and prices (₹) |
-| `server/store.js` | Saving orders and order status |
+| `server/db.js` | Connects to MongoDB |
+| `server/store.js` | Order schema (Mongoose), saving and finding orders, order status |
 | `server/payment.js` | Demo online payment |
 | `server/support.js` | AI helpline (Claude with order-lookup and refund tools) |
 | `src/pages/` | Shop, Configurator, Checkout, Order pages |

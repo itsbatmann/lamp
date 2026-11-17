@@ -7,6 +7,7 @@ export const useHelpline = () => useContext(HelplineContext)
 export function HelplineProvider({ children }) {
   const [isOpen, setIsOpen] = useState(false)
   const [draft, setDraft] = useState('') // optional text to pre-fill, e.g. "Where is my order LUM-…?"
+  const [updatedOrder, setUpdatedOrder] = useState(null) // last order changed from the chat (e.g. cancelled)
 
   const openHelpline = (prefill = '') => {
     setDraft(prefill)
@@ -15,7 +16,7 @@ export function HelplineProvider({ children }) {
   const closeHelpline = () => setIsOpen(false)
 
   return (
-    <HelplineContext.Provider value={{ isOpen, draft, setDraft, openHelpline, closeHelpline }}>
+    <HelplineContext.Provider value={{ isOpen, draft, setDraft, openHelpline, closeHelpline, updatedOrder, setUpdatedOrder }}>
       {children}
     </HelplineContext.Provider>
   )
